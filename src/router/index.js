@@ -29,11 +29,7 @@ export default new Router({
       name: 'content',
       component: mj_content
     },
-    {
-      path: '/question',
-      name: 'question',
-      component: mj_question_type
-    },
+    // 系统管理
     {
       path: '/yhgl',
       name: 'yhgl',
@@ -48,6 +44,12 @@ export default new Router({
       path: '/jsgl',
       name: 'jsgl',
       component: mj_role
+    },
+    //直播管理
+    {
+      path: '/ltsgl',
+      name: 'ltsgl',
+      component: mj_content
     },
     {
       path: '/readme',

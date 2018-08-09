@@ -45,7 +45,7 @@ export default {
       this.$refs.loginInfo.validate((valid) => {
         if (valid) {
           // var password = this.$MD5(this.ruleForm.password);
-          this.loginRequest("/admin/login",{username:this.ruleForm.userName,password:this.ruleForm.password}).then(response => {
+          this.loginRequest("/admin/admin/login",{username:this.ruleForm.userName,password:this.ruleForm.password}).then(response => {
             debugger;
             if(response.status==200){
               var data = response.data;
