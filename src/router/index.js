@@ -5,15 +5,14 @@ import adminlogin from '@/components/admin/login'
 import mj_main from '@/components/admin/common/main'
 import mj_content from '@/components/admin/common/content'
 
-import mj_question_type from '@/components/testQuestion/questionType'
 import readme from '@/components/admin/readme'
 
 // 用户
-import mj_user from '@/components/admin/user/user'
+import mj_user from '@/components/admin/system/user/user'
 // 菜单
-import mj_menu from '@/components/admin/menu/menu'
+import mj_menu from '@/components/admin/system/menu/menu'
 //角色
-import mj_role from '@/components/admin/role/role'
+import mj_role from '@/components/admin/system/role/role'
 
 Vue.use(Router)
 

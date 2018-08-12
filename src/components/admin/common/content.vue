@@ -16,19 +16,13 @@ export default {
     return {
       stomp: null,
       text: {},
-      isConnect: false
+      isConnect: false,
+      chatRoomId: "1"
     };
   },
   props: {},
   mounted() {
-    // this.connect();
-    var ChatRoomId = "";
-    if ("root" == localStorage.getItem("userName")) {
-        ChatRoomId = "1";
-      } else {
-        ChatRoomId = "2";
-      }
-    this.text.ChatRoomId = ChatRoomId;
+    this.text.ChatRoomId = "1";
     this.text.UserName = localStorage.getItem("userName");
   },
   methods: {
@@ -50,19 +44,20 @@ export default {
     },
     onConnected: function(frame) {
       this.isConnect = true;
-      var topic = "";
-      if ("root" == localStorage.getItem("userName")) {
-        topic = "/topic/1";
-      } else {
-        topic = "/topic/2";
-      }
-      this.stomp.subscribe(topic, this.onmessage);
+      this.stomp.subscribe("/topic/msg/" + this.chatRoomId, this.onMsg);
+      this.stomp.subscribe("/topic/wbmsg/" + this.chatRoomId, this.onWbMsg);
     },
     onError: function(frame) {
       //错误信息
       console.log("Failed: " + frame);
     },
-    onmessage: function(frame) {
+    onMsg: function(frame) {
+      //接收消息
+      //   this.msg.push(frame.body);
+      console.log("收到消息");
+      console.log(frame.body);
+    },
+    onWbMsg: function(frame) {
       //接收消息
       //   this.msg.push(frame.body);
       console.log("收到消息");

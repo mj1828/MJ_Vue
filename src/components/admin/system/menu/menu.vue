@@ -58,7 +58,7 @@
 
 <script>
 import mj_menu_dialog from "./menuDialog";
-import store from "../../../store/store";
+import store from "../../../../store/store";
 import jquery from "jquery";
 export default {
   name: "mj-menu",

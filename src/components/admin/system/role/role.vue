@@ -58,7 +58,7 @@
 
 <script>
 import mj_role_dialog from "./roleDialog";
-import store from "../../../store/store";
+import store from "../../../../store/store";
 import jquery from "jquery";
 export default {
   name: "mj-role",

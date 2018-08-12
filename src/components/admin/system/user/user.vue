@@ -58,7 +58,7 @@
 
 <script>
 import mj_user_dialog from "./userDialog";
-import store from "../../../store/store";
+import store from "../../../../store/store";
 import jquery from "jquery";
 export default {
   name: "mj-user",
