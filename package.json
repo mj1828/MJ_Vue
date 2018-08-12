@@ -1,8 +1,8 @@
 {
-  "name": "mj_sso",
+  "name": "mj",
   "version": "1.0.0",
-  "description": "MJ_SSO",
-  "author": "benxiaohai <zhangyc_java@163.com>",
+  "description": "MJ",
+  "author": "mj1828 <mj_java@126.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
