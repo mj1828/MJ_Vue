@@ -6,13 +6,15 @@ import mj_main from '@/components/admin/common/main'
 import mj_content from '@/components/admin/common/content'
 
 import readme from '@/components/admin/readme'
-
+// 系统管理
 // 用户
 import mj_user from '@/components/admin/system/user/user'
 // 菜单
 import mj_menu from '@/components/admin/system/menu/menu'
 //角色
 import mj_role from '@/components/admin/system/role/role'
+// 聊天室管理
+import mj_chatroom from '@/components/admin/im/chatroom/chatroom'
 
 Vue.use(Router)
 
@@ -48,7 +50,7 @@ export default new Router({
     {
       path: '/ltsgl',
       name: 'ltsgl',
-      component: mj_content
+      component: mj_chatroom
     },
     {
       path: '/readme',

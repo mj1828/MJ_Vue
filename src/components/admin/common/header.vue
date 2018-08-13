@@ -7,10 +7,10 @@
             <el-col :span="14">
                 <div class="menus">
 
-                    <div  v-for="menu in menus" class="menu" :id="menu.path" @mouseenter="menuenter(menu.path)" @mouseleave="menuleave(menu.path)" @click="menuclick(menu.path,menu.id)">
+                    <div v-for="menu in menus" class="menu" :id="menu.path" @mouseenter="menuenter(menu.path)"  >
                         <img :src="require('../../../assets/menu/'+menu.icon)" width="60px" height="60px" v-if="path!=menu.path" />
                         <div class="menutitle" v-if="path!=menu.path">{{menu.name}}</div>
-                        <div class="menutitleshow" v-else>{{menu.name}}</div>
+                        <div class="menutitleshow" @mouseleave="menuleave()" @click="menuclick(menu.path,menu.id)" v-else>{{menu.name}}</div>
                     </div>
                 </div>
             </el-col>
@@ -32,7 +32,7 @@ export default {
   data(){
       return {
           menus:[],
-          path:0,
+          path:"",
           id:0
       }
   },
@@ -42,18 +42,10 @@ export default {
         if(this.path==btn){
             return;
         }
-        jquery(id).children('img').fadeOut(300,function(){
-            jquery(id).children('div').fadeIn(100);
-        });
+       this.path = btn;
     },
-    menuleave: function(btn){
-        var id = "#"+btn;
-        if(this.path==btn){
-            return;
-        }
-        jquery(id).children('div').fadeOut(300,function(){
-            jquery(id).children('img').fadeIn(100);
-        });
+    menuleave: function(){
+      this.path = localStorage.getItem('path');
     },
     menuclick: function(path,id){
         this.path = path;
