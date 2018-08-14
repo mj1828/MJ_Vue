@@ -25,17 +25,15 @@
         <template>
           <el-table v-loading="loading" :data="users" style="width: 100%" stripe @selection-change="changeFun">
             <el-table-column type="selection" width="55" class="selection" prop='id'></el-table-column>
-            <el-table-column prop="userName" label="用户名">
+            <el-table-column prop="name" label="聊天室名">
             </el-table-column>
-            <el-table-column prop="roleId" label="角色">
+            <el-table-column prop="notice" label="公告">
             </el-table-column>
-            <el-table-column prop="head" label="头像">
+            <el-table-column prop="memberid" label="管理员">
             </el-table-column>
-            <el-table-column prop="email" label="邮箱">
+            <el-table-column prop="gag" label="禁止加入">
             </el-table-column>
-            <el-table-column prop="phone" label="电话">
-            </el-table-column>
-            <el-table-column prop="addTime" label="添加时间" width="230">
+            <el-table-column prop="privatechat" label="私有聊天">
             </el-table-column>
           </el-table>
         </template>
@@ -51,7 +49,7 @@
         </div>
       </el-footer>
     </el-container>
-    <mj_chatroom_dialog :title="title" :dialogStatus="dialogStatus" :userId="userId" @changeDialogStatus="changeDialogStatus" @userList="userList"></mj_chatroom_dialog>
+    <mj_chatroom_dialog :title="title" :dialogStatus="dialogStatus" :chatRoomId="chatRoomId" @changeDialogStatus="changeDialogStatus" @userList="userList"></mj_chatroom_dialog>
   </div>
 
 </template>
@@ -69,7 +67,7 @@ export default {
       multipleSelection: [],
       users: [],
       dialogStatus: false,
-      userId: "",
+      chatRoomId: "",
       title: "",
       loading: true,
       height: "40px",
@@ -86,7 +84,7 @@ export default {
   },
   methods: {
     add: function() {
-      this.userId = "";
+      this.chatRoomId = "";
       this.dialogStatus = true;
       this.title = "添加用户";
     },
@@ -98,7 +96,7 @@ export default {
         });
         return;
       }
-      this.userId = this.multipleSelection[0].id;
+      this.chatRoomId = this.multipleSelection[0].id;
       this.dialogStatus = true;
       this.title = "编辑用户信息";
     },
@@ -110,13 +108,13 @@ export default {
         });
         return;
       } else {
-        this.userId = this.multipleSelection[0].id;
+        this.chatRoomId = this.multipleSelection[0].id;
       }
       this.$confirm("此操作将删除该用户, 是否继续?", "确认删除", {
         type: "warning"
       }).then(() => {
         this.loading = true;
-        this.deleteRequest("/admin/yhgl/delete/" + this.userId)
+        this.deleteRequest("/admin/ltsgl/delete/" + this.chatRoomId)
           .then(response => {
             this.loading = false;
             if (response.status == 200) {
@@ -157,7 +155,7 @@ export default {
           param + "&startTime=" + this.date[0] + "&endTime=" + this.date[1];
       }
       this.loading = true;
-      this.getRequest("/admin/yhgl/list" + param)
+      this.getRequest("/admin/ltsgl/list" + param)
         .then(response => {
           this.loading = false;
           if (response.status == 200) {
@@ -181,7 +179,7 @@ export default {
       this.dialogStatus = false;
     },
     userList: function(pageNum,pageSize) {
-      var url="/admin/yhgl/list";
+      var url="/admin/ltsgl/list";
       if(!pageNum){
         pageNum = 0;
       }

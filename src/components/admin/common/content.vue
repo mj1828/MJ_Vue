@@ -36,7 +36,7 @@ export default {
   methods: {
     connect: function() {
       //连接服务器
-      this.stomp = Stomp.client("ws://localhost:8090/ws");
+      this.stomp = Stomp.client("ws://www.mj.com/ws");
       this.stomp.connect("", this.onConnected, this.onError);
     },
     onConnected: function(frame) {
